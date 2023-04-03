@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row-0">
+        <span>SCORE</span>
+        <span class="score" data-value="0">0</span>
+      </div>
+      <div class="question" data-value="question">Day la cau hoi</div>
+      <div class="row-1">
+        <button
+          class="answer-1"
+          onclick="correctAnswer(this)"
+          value="0"
+        ></button>
+        <button
+          class="answer-2"
+          onclick="correctAnswer(this)"
+          value="1"
+        ></button>
+      </div>
+      <div class="row-2">
+        <button
+          class="answer-3"
+          onclick="correctAnswer(this)"
+          value="2"
+        ></button>
+        <button
+          class="answer-4"
+          onclick="correctAnswer(this)"
+          value="3"
+        ></button>
+      </div>
+    </div>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .row-0 {
+        text-align: center;
+      }
+
+      .question {
+        width: 30%;
+        height: 50px;
+        border: 1px solid black;
+        text-align: center;
+        margin-left: 532px;
+        margin-top: 200px;
+      }
+      .row-1 {
+        display: flex;
+        gap: 50px;
+        margin-top: 30px;
+        margin-left: 470px;
+      }
+      .row-2 {
+        display: flex;
+        gap: 50px;
+        margin-top: 30px;
+        margin-left: 470px;
+      }
+      .answer-1 {
+        width: 25%;
+        height: 50px;
+        text-align: center;
+      }
+      .answer-2 {
+        width: 25%;
+        height: 50px;
+        text-align: center;
+      }
+      .answer-3 {
+        width: 25%;
+        height: 50px;
+        text-align: center;
+      }
+      .answer-4 {
+        width: 25%;
+        height: 50px;
+        text-align: center;
+      }
+    </style>
+    <script>
+      const questions = [
+        {
+          content: "Câu hỏi 1: Đông Lào là nước nào ?",
+          answers: ["A.Việt Nam", "B.Lào", "C.Philipine", "D.Indonesia"],
+          correctAnswer: 0,
+        },
+        {
+          content: "Câu hỏi 2: Tây Lào là nước nào",
+          answers: ["A.Mianma", "B.Ấn Độ", "C.Nepal", "D.Thái Lan"],
+          correctAnswer: 3,
+        },
+        {
+          content: "Câu hỏi 3: Biết ông Thương không?",
+          answers: ["A.Không", "B.Thương nào?", "C.Có", "D.Chịu"],
+          correctAnswer: 1,
+        },
+        {
+          content: "Câu hỏi 4: 1+1 =? ",
+          answers: ["A.3", "B.5", "C.7", "D.Chịu"],
+          correctAnswer: 3,
+        },
+      ];
+      var index = 0;
+
+      var score = 0;
+
+      $(".question").text(questions[index].content);
+
+      function changeAnswer() {
+        $(".answer-1").text(questions[index].answers[0]);
+        $(".answer-2").text(questions[index].answers[1]);
+        $(".answer-3").text(questions[index].answers[2]);
+        $(".answer-4").text(questions[index].answers[3]);
+      }
+      changeAnswer();
+      function correctAnswer(clicked) {
+        if (clicked.value == questions[index].correctAnswer) {
+          score += 10;
+          $(".score").text(score);
+        }
+        if (index == 3) {
+          alert(score);
+        }
+        index++;
+        $(".question").text(questions[index].content);
+        changeAnswer();
+      }
+    </script>
+  </body>
+</html>
